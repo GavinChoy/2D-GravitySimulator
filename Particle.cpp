@@ -52,9 +52,12 @@ class Particle{
 
         double get_vy(){return vy;}
 
-        void advance(){
-            x += fx / m;
-            y += fy / m;
+        void advance(double dt){
+            vx += (fx / m) * dt;
+            vy += (fy / m) * dt;
+
+            x += vx * dt;
+            y += vy * dt;
 
             fx = 0;
             fy = 0;
@@ -63,7 +66,7 @@ class Particle{
         void add_forces(double G, double m2, double x2, double y2){
             double distance = sqrt(pow(x2 - x, 2) + pow(y2 - y, 2));
 
-            fx += G * m * m2 * (x - x2) / pow(distance, 3);
-            fy += G * m * m2 * (y - y2) / pow(distance, 3);
+            fx += G * m * m2 * (x2 - x) / pow(distance, 3);
+            fy += G * m * m2 * (y2 - y) / pow(distance, 3);
         }
 };
