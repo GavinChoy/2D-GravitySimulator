@@ -24,6 +24,8 @@ echo "This is free software, and you are welcome to redistribute it"
 echo "under certain conditions."
 echo ""
 
+# Run simulation and record the positions of the particles in a log file
 ./2D-GravitySimulator > points.log
 
+# Plot the paths of the particles
 gnuplot gnuplotter.gnu
